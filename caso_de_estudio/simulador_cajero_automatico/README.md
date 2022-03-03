@@ -10,9 +10,9 @@ El usuario debera experimentar la siguiente secuencia de eventos:
 
 3. Una vez que el Cajero autentica al usuario, el menú principal debe contener una opción numerada para cada uno de los tres tipos de transacciones: Solicitud de saldo (opción 1), retiro (opción 2) y depósito (opción 3). El menú principal también debe contener una opción para que el usuario pueda salir del sistema (opción 4). Después el usuario elegirá si desea realizar una transacción (oprimiendo 1, 2 o 3) o salir del sistema (oprimiendo 4).
 
-<img src="https://github.com/rayner-villalba-coderoad-com/programacion-3/blob/main/caso_de_estudio/simulador_cajero_automatico/pantalla-1.png" alt="image-1" width="200"/>
+<img src="https://github.com/rayner-villalba-coderoad-com/programacion-3/blob/main/caso_de_estudio/simulador_cajero_automatico/pantalla-1.png" alt="image-1" width="1000"/>
 
-<img src="https://github.com/rayner-villalba-coderoad-com/programacion-3/blob/main/caso_de_estudio/simulador_cajero_automatico/pantalla-2.png" alt="drawing" width="200"/>
+<img src="https://github.com/rayner-villalba-coderoad-com/programacion-3/blob/main/caso_de_estudio/simulador_cajero_automatico/pantalla-2.png" alt="drawing" width="1000"/>
 
-<img src="https://github.com/rayner-villalba-coderoad-com/programacion-3/blob/main/caso_de_estudio/simulador_cajero_automatico/pantalla-3.png" alt="drawing" width="200"/>
+<img src="https://github.com/rayner-villalba-coderoad-com/programacion-3/blob/main/caso_de_estudio/simulador_cajero_automatico/pantalla-3.png" alt="drawing" width="1000"/>
 
