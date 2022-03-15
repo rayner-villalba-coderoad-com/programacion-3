@@ -89,15 +89,18 @@ public class PruebaCajeroAutomatico {
                 printSaldo(saldo);
                 break;
             case 2:
+                //Retiro del cajero automatico
+               saldo = retirarMonto(saldo);
                 printSaldo(saldo);
                 break;
             case 3:
+                //Depositar al cajero
+                saldo = depositarAlATM(saldo);
                 printSaldo(saldo);
                 break;
             case 4:
                 System.out.print("Terminando el programa!!!");
                 System.exit(0);
-
                 break;
         }
     }
@@ -109,17 +112,17 @@ public class PruebaCajeroAutomatico {
         System.out.printf("%nEl saldo de tu cuenta es: %.2f Bs.%n%n", saldo);
     }
 
-    public static double withdrawFromATM(double initialBalance) {
+    public static double retirarMonto(double initialBalance) {
         Scanner sc = new Scanner(System.in);
         double finalBalance = initialBalance;
         int option = 0;
         do {
-            displayWithdrawMenu();
+            mostrarRetiroMenu();
             while (!sc.hasNextInt()) {
                 String input = sc.next();
                 System.out.printf("\"%s\" no es una opcion valida.%n", input);
 
-                displayWithdrawMenu();
+                mostrarRetiroMenu();
             }
             option = sc.nextInt();
         } while (option <= 0 || option > 6 );
@@ -150,7 +153,7 @@ public class PruebaCajeroAutomatico {
         return finalBalance;
     }
 
-    public static double depositToATM(double balance) {
+    public static double depositarAlATM(double balance) {
         double insertedBalance = 0;
         Scanner sc = new Scanner(System.in);
         System.out.println("**********************************************");
@@ -171,7 +174,7 @@ public class PruebaCajeroAutomatico {
         return (balance + insertedBalance);
     }
 
-    public static void displayWithdrawMenu() {
+    public static void mostrarRetiroMenu() {
         System.out.println("********************************************");
         System.out.println("           Menu de Retiro                   ");
         System.out.println("********************************************");
