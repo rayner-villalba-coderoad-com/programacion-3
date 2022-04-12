@@ -2,7 +2,7 @@ package com.unifranz;
 
 import java.util.Date;
 
-public class Trabajador {
+public abstract class Trabajador {
     //Atributos
     private String nombre;
     private String puesto;
@@ -27,7 +27,7 @@ public class Trabajador {
         this.fecha_contratacion = fecha_contratacion;
     }
 
-
+    public abstract double calcularPaga();
 
     //Constructor
     public Trabajador(String nombreP,
