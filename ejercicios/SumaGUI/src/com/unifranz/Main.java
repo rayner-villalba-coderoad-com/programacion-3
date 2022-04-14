@@ -19,7 +19,7 @@ public class Main {
             int suma = numero1 + numero2;
             JOptionPane.showMessageDialog(null, "La suma es: " + suma, "Aprendiendo a SUMAR", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "Usted no ha ingresado un valor valido en el programa", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Usted no ha ingresado un valor valido en el programa", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
 
     }
