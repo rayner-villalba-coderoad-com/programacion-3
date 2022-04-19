@@ -11,6 +11,7 @@ public class Ventanita extends JFrame implements ActionListener {
     private JTextField campoTextoUsuario;
     private JPasswordField campoTextoPassword;
     private JButton botonLogin;
+    private JButton cancelar;
 
 
     //Constructor
@@ -51,14 +52,28 @@ public class Ventanita extends JFrame implements ActionListener {
         this.botonLogin.setBounds(120, 110, 300, 30);
         add(this.botonLogin);
 
+
+        this.cancelar = new JButton("CANCELAR");
+        this.cancelar.setBounds(500, 110, 300, 30);
+        add(this.cancelar);
+
         //Paso 1 agregamos funcionalidad al boton
         this.botonLogin.addActionListener(this);
+        this.cancelar.addActionListener(this);
     }
 
     //Paso 2 agregando funcionalidad boton
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == botonLogin) {
-            JOptionPane.showMessageDialog(null, "Hola como estas a partir del evento boton", "INGRESAR", JOptionPane.INFORMATION_MESSAGE);
+            ejecutarLogin();
         }
+
+        if(e.getSource() == cancelar) {
+            JOptionPane.showMessageDialog(null, "Se ha cancelado", "CANCELAR", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    public void ejecutarLogin() {
+        JOptionPane.showMessageDialog(null, "Hola como estas a partir del evento boton", "INGRESAR", JOptionPane.INFORMATION_MESSAGE);
     }
 }
