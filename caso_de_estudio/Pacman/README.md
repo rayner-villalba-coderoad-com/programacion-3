@@ -10,3 +10,7 @@ El presente juego busca que podamos aplicar los conocimientos:
   * Gráficos Java2D
   
 <img src="https://github.com/rayner-villalba-coderoad-com/programacion-3/blob/main/caso_de_estudio/Pacman/pacman.jpeg" alt="image-1" width="1000" />
+
+## Fuente
+ *  [Pacman parte 1](https://www.youtube.com/watch?v=ATz7bIqOjiA)
+ *  [Pacman parte 2](https://www.youtube.com/watch?v=r7i25lbmBd4)
