@@ -62,7 +62,7 @@ public class Juego extends JPanel implements ActionListener {
     private short[] screenData;
     private Timer tiempo;
 
-    //Contructor
+    //Constructor
     public Juego() {
         System.out.println("Creando el juego");
         cargarImagenes();
@@ -270,7 +270,7 @@ public class Juego extends JPanel implements ActionListener {
     }
 
     private void dibujarEscenario(Graphics2D g2d) {
-        short i = 0;
+        short i = 0;:
         int x, y;
 
         //Recorrido de filas
@@ -282,12 +282,13 @@ public class Juego extends JPanel implements ActionListener {
                 //Definimos el ancho
                 g2d.setStroke(new BasicStroke(5));
 
-//                if ((levelData[i] == 0)) {
-//                    g2d.fillRect(x, y, BLOCK_SIZE, BLOCK_SIZE);
-//                }
+                if ((levelData[i] == 0)) {
+                    g2d.fillRect(x, y, BLOCK_SIZE, BLOCK_SIZE);
+                }
 
                 if ((screenData[i] & 1) != 0) {
                     //Dibujar la linea recta a la izquierda que va de arriba a abajo
+                    //g2d.drawline(xinicial, y inicial, x-final, y-final)
                     g2d.drawLine(x, y, x, y + BLOCK_SIZE - 1);
                 }
 

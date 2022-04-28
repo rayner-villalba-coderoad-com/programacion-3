@@ -10,10 +10,14 @@ public class Pacman extends JFrame {
     public Pacman() {
         //Agregamos el titulo a la ventanita
         super("Pacman Unifranz!");
+        //Declaramos el panel
         juego = new Juego();
 
         //Asignarmos el tamano
         setSize(380, 420);
+
+        //Desahabilitar el re dimensionado de la ventana
+        setResizable(false);
 
 
         //Agregamos el contenedor
