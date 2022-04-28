@@ -270,7 +270,7 @@ public class Juego extends JPanel implements ActionListener {
     }
 
     private void dibujarEscenario(Graphics2D g2d) {
-        short i = 0;:
+        short i = 0;
         int x, y;
 
         //Recorrido de filas
