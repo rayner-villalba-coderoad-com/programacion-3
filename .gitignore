@@ -2,3 +2,10 @@
 .DS_Store
 
 .idea
+/ejercicios/Calculadora/nbproject/private/
+/ejercicios/Calculadora/build/
+/ejercicios/Calculadora/dist/
+/ejercicios/ConexionJDBCTest1/nbproject/private/
+/ejercicios/ConexionJDBCTest1/build/
+/caso_de_estudio/VideoclubUnifranz/nbproject/private/
+/caso_de_estudio/VideoclubUnifranz/build/
