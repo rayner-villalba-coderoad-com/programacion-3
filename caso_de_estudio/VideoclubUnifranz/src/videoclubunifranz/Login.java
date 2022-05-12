@@ -4,6 +4,9 @@
  */
 package videoclubunifranz;
 
+import com.mysql.jdbc.Connection;
+import javax.swing.JOptionPane;
+import java.sql.*;
 /**
  *
  * @author rayner
@@ -15,6 +18,18 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        //Cargango la libreria de mysql
+        cargarDriver();
+    }
+    
+    public void cargarDriver() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch(Exception ex) {
+           // System.out.println("No se puede cargar el driver de MYSQL");
+           // System.out.println("Error : " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "No se puede cargar el driver de MYSQL debido a este error: " + ex.getMessage(), "Error Driver Mysql", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -123,10 +138,59 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String usu = this.usuario.getText();
-        char[] contrasena = this.password.getPassword();
+        String nombreDeUsuario = this.usuario.getText();
+        String contrasena = new String(this.password.getPassword());
         
-        System.out.println("Usuario: " + usu + " password: " + contrasena);
+        System.out.println("Usuario: " + nombreDeUsuario + " password: " + contrasena);
+        
+        //Paso 2 hacemos la consulta dentro de un try catch
+        try {
+            String IP = "127.0.0.1";
+            String PUERTO = "23306";
+            String NOMBRE_BASE_DATOS="base_de_datos_videoclub";
+            String USUARIO="root";
+            String passwordDB = "root";
+            //Conectando a la base de datos
+            Connection conexion = (Connection) DriverManager.getConnection("jdbc:mysql://" + IP + ":" + PUERTO + "/" + NOMBRE_BASE_DATOS,USUARIO,passwordDB);
+            Statement comando = conexion.createStatement();
+            //ejecutar el query
+            
+            //ejemplo del select
+//            ResultSet registro = comando.executeQuery("select * from empleado");
+//            
+//            while(registro.next()) {
+//                 System.out.println("ID: " + registro.getInt("idempleado"));
+//                 System.out.println("Nombre: " + registro.getString("nombre"));
+//                System.out.println("Usuario: " + registro.getString("usuario"));
+//            }
+
+           System.out.println("QUery: " + "select * from empleado WHERE usuario='" + nombreDeUsuario + "' AND password=" + contrasena);
+            ResultSet resultado = comando.executeQuery("select * from empleado WHERE usuario='" + nombreDeUsuario + "' AND password='" + contrasena+ "'");
+ 
+            if (resultado.next() == true) {
+                System.out.println("ID: " + resultado.getInt("idempleado"));
+                 System.out.println("Nombre: " + resultado.getString("nombre"));
+                System.out.println("Usuario: " + resultado.getString("usuario"));
+                
+                JOptionPane.showMessageDialog(null, "BIENVENIDO AL SISTEMA: "+ resultado.getString("usuario"));
+                this.setVisible(false);
+                Sistema sistema = new Sistema();
+                sistema.setLocationRelativeTo(null);
+                sistema.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario no valido ", "Usuario no valido vuelva a intentarlo", JOptionPane.WARNING_MESSAGE);
+                this.usuario.setText("");
+                this.password.setText("");
+            }
+            
+            
+            //debemos cerrar
+            conexion.close();
+            
+            
+        } catch(Exception ex) {
+           System.out.println("Error: " + ex.getMessage());
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
