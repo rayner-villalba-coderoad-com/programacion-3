@@ -4,6 +4,7 @@
  */
 package videoclubunifranz;
 
+import Base_de_Datos.Manejador_BD;
 import com.mysql.jdbc.Connection;
 import javax.swing.JOptionPane;
 import java.sql.*;
@@ -16,21 +17,24 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    Manejador_BD manejadorBD;
+    
     public Login() {
         initComponents();
         //Cargango la libreria de mysql
-        cargarDriver();
+        //cargarDriver();
+        this.manejadorBD = new Manejador_BD();
     }
     
-    public void cargarDriver() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch(Exception ex) {
-           // System.out.println("No se puede cargar el driver de MYSQL");
-           // System.out.println("Error : " + ex.getMessage());
-            JOptionPane.showMessageDialog(null, "No se puede cargar el driver de MYSQL debido a este error: " + ex.getMessage(), "Error Driver Mysql", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+//    public void cargarDriver() {
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver");
+//        } catch(Exception ex) {
+//           // System.out.println("No se puede cargar el driver de MYSQL");
+//           // System.out.println("Error : " + ex.getMessage());
+//            JOptionPane.showMessageDialog(null, "No se puede cargar el driver de MYSQL debido a este error: " + ex.getMessage(), "Error Driver Mysql", JOptionPane.ERROR_MESSAGE);
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -145,27 +149,8 @@ public class Login extends javax.swing.JFrame {
         
         //Paso 2 hacemos la consulta dentro de un try catch
         try {
-            String IP = "127.0.0.1";
-            String PUERTO = "23306";
-            String NOMBRE_BASE_DATOS="base_de_datos_videoclub";
-            String USUARIO="root";
-            String passwordDB = "root";
-            //Conectando a la base de datos
-            Connection conexion = (Connection) DriverManager.getConnection("jdbc:mysql://" + IP + ":" + PUERTO + "/" + NOMBRE_BASE_DATOS,USUARIO,passwordDB);
-            Statement comando = conexion.createStatement();
-            //ejecutar el query
-            
-            //ejemplo del select
-//            ResultSet registro = comando.executeQuery("select * from empleado");
-//            
-//            while(registro.next()) {
-//                 System.out.println("ID: " + registro.getInt("idempleado"));
-//                 System.out.println("Nombre: " + registro.getString("nombre"));
-//                System.out.println("Usuario: " + registro.getString("usuario"));
-//            }
-
-           System.out.println("QUery: " + "select * from empleado WHERE usuario='" + nombreDeUsuario + "' AND password=" + contrasena);
-            ResultSet resultado = comando.executeQuery("select * from empleado WHERE usuario='" + nombreDeUsuario + "' AND password='" + contrasena+ "'");
+            manejadorBD.conectarseBD();
+            ResultSet resultado = manejadorBD.consultarDB("select * from empleado WHERE usuario='" + nombreDeUsuario + "' AND password='" + contrasena + "'");
  
             if (resultado.next() == true) {
                 System.out.println("ID: " + resultado.getInt("idempleado"));
@@ -185,7 +170,7 @@ public class Login extends javax.swing.JFrame {
             
             
             //debemos cerrar
-            conexion.close();
+            manejadorBD.cerrarConexionBD();
             
             
         } catch(Exception ex) {
