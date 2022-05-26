@@ -4,6 +4,8 @@
  */
 package videoclubunifranz;
 
+import java.awt.BorderLayout;
+
 /**
  *
  * @author rayner
@@ -14,7 +16,17 @@ public class Sistema extends javax.swing.JFrame {
      * Creates new form Sistema
      */
     public Sistema() {
+        FondeDePantalla fondoPanel = new FondeDePantalla();
+                
         initComponents();
+        setLayout(new BorderLayout());
+
+        fondoPanel.setImagen("/IMAGENES/fondo_sistema.jpeg");
+        
+        add(fondoPanel, BorderLayout.CENTER);
+        
+        this.setResizable(false);
+
     }
 
     /**
@@ -29,12 +41,14 @@ public class Sistema extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(1200, 800));
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/usuario.jpg"))); // NOI18N
         jMenu3.setText("SOCIOS");
@@ -48,6 +62,16 @@ public class Sistema extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItem2);
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/status_online.png"))); // NOI18N
+        jMenuItem1.setText("EDICION DEL USUARIO");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
 
         jMenuBar2.add(jMenu3);
 
@@ -71,11 +95,11 @@ public class Sistema extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 265, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
         pack();
@@ -87,6 +111,15 @@ public class Sistema extends javax.swing.JFrame {
        regUsuarios.setLocationRelativeTo(null);
        regUsuarios.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        
+        EdicionUsuario edicionUsuario = new EdicionUsuario();
+        edicionUsuario.setLocationRelativeTo(null);
+        edicionUsuario.setResizable(false);
+        edicionUsuario.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,6 +161,7 @@ public class Sistema extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

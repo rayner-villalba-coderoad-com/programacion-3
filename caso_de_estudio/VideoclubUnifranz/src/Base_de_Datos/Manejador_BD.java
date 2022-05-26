@@ -19,11 +19,12 @@ import javax.swing.JOptionPane;
  */
 public class Manejador_BD {
     //Atributos
-    private final String IP = "sql10.freemysqlhosting.net";
-    private final String PUERTO = "3306";
-    private final String NOMBRE_BASE_DATOS = "sql10493622";
-    private final String USUARIO_BASE_DATOS = "sql10493622";
-    private final String password_BASE_DATOS = "I2DM1dcytb";
+    private final String IP = "127.0.0.1";
+    private final String PUERTO = "23306";
+    private final String NOMBRE_BASE_DATOS = "base_de_datos_videoclub";
+    private final String USUARIO_BASE_DATOS = "root";
+    private final String password_BASE_DATOS = "root";
+    
     private Connection conexion;
     
     //constructor
@@ -94,7 +95,6 @@ public class Manejador_BD {
            comando.executeUpdate(insercionSQL);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se puede insertar el registro a la base de datos: " + ex.getMessage(), "Error Insercion BD", JOptionPane.ERROR_MESSAGE);
-        }
-       
+        }    
    }
 }
