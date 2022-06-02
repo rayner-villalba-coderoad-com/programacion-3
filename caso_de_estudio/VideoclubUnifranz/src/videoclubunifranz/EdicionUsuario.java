@@ -227,6 +227,7 @@ public class EdicionUsuario extends javax.swing.JFrame {
                     
                     this.PanelResultado.setVisible(true);
                 } else {
+                    this.idEmpleado = 0;
                     JOptionPane.showMessageDialog(this, "No se han encontrado al usuario " + nombreUsuario, "", JOptionPane.INFORMATION_MESSAGE);
                 }
                 
