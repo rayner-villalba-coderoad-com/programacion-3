@@ -103,4 +103,18 @@ public class Manejador_BD {
             JOptionPane.showMessageDialog(null, "No se puede insertar el registro a la base de datos: " + ex.getMessage(), "Error Insercion BD", JOptionPane.ERROR_MESSAGE);
         }    
    }
+   
+   public int borrarRegistro(String borradoSQL) {
+       int cantidad = 0;
+       try {
+           Statement comando = conexion.createStatement();
+           //Si el borrado del registro es exitoso cantidad tomara el valor de 1, caso contrario estara en 0;
+           cantidad = comando.executeUpdate(borradoSQL);
+          
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se puede eliminar el registro a la base de datos: " + ex.getMessage(), "Error Borrado del registro  BD", JOptionPane.ERROR_MESSAGE);
+        } 
+       
+        return cantidad;
+   }
 }
